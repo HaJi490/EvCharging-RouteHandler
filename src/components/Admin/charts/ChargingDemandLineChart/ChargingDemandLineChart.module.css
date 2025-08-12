@@ -1,0 +1,19 @@
+.custom_tooltip {
+  background-color: #262626; /* 어두운 배경색 */
+  color: #ffffff;             /* 흰색 글씨 */
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: none;
+  font-size: 14px;
+}
+
+.custom_tooltip .tooltip_label {
+  font-weight: bold;
+  margin: 0;
+}
+
+.custom_tooltip .tooltip_intro {
+  color: #a3a3a3; /* 약간 연한 회색 */
+  margin: 5px 0 0 0;
+}

@@ -1,0 +1,44 @@
+.mainContainer{
+    /* width: 100%;
+    height: 100%; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100vh - 80px); 
+    position: relative;
+    margin-top: 80px;
+    /* nav 높이 빼기 */
+}
+
+.searchInput{
+    width: 100%; 
+    padding: 10px 0px 10px 15px ;
+    /* margin-bottom: 7; */
+    background: rgba(79, 169, 105, 0.1);
+    border-radius: 999px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchInput::placeholder {
+    color: #f2f2f2;
+}
+
+.listSection{
+    border-bottom: 1px solid #f2f2f2;
+    padding: 10 0 10 0;
+    cursor: pointer;
+    
+}
+
+.listSection:hover{
+    background-color: rgba(79, 169, 105, 0.2);
+    
+}
+
+.searchResult{
+    cursor: pointer;
+    margin: 3px 4px ;
+    border: 1px solid;
+    padding: 10px;
+}

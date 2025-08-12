@@ -1,0 +1,46 @@
+/* 1. 기본 막대의 투명도 */
+:global(.recharts-bar-rectangle) rect {
+    opacity: 0.3;   /*기본 상태 반투명*/
+    transition: opacity 0.2 ease-in-out;
+}
+
+/* 2. 마우스를 올린 막대의 투명도 설정 */
+/* .recharts-bar-cursor는 호버된 Bar 영역을 의미합니다. */
+
+/* Recharts의 Bar는 개별적으로 호버를 감지하기 어려우므로,
+   activeBar를 활용하고 Tooltip의 cursor를 사용하지 않는 것이 좋습니다.
+   아래는 activeBar에 대한 스타일링입니다. activeBar가 호버된 막대 위에 렌더링됩니다.
+*/
+:global(.recharts-active-bar) rect {
+  opacity: 1 !important; /* 활성화된 막대는 항상 불투명하게 */
+}
+
+/* 3. 커스텀 툴팁 스타일 (이미지와 유사하게) */
+.custom_barchart_tooltip {
+  /* position: relative;  */
+  /* 점 위치 조정을 위해 relative 설정 */
+  background-color: #262626;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 14px;
+  /* font-weight: bold; */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 4. ::after 가상 요소를 사용해 새로운 점 만들기 */
+/* .custom_barchart_tooltip::after {
+  content: ''; 가상 요소는 content 속성이 필수입니다.
+  position: absolute; */
+  
+  /* 툴팁의 정중앙 하단에 위치시킵니다. */
+  /* left: 50%;
+  bottom: -5px; 툴팁 바로 아래에 붙도록 조정
+  transform: translateX(-50%); */
+
+  /* 점의 모양을 만듭니다. */
+  /* width: 10px;
+  height: 10px;
+  background-color: #262626; 툴팁과 같은 색상
+  border-radius: 50%;
+} */
+

@@ -1,0 +1,110 @@
+.searchBtn {
+  color: #4FA969;
+  border-radius: 9999px; /* rounded-full */
+  width: 2rem;   /* w-8 */
+  height: 2rem;  
+  /* h-8 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  background-color: rgba(79, 169, 105, 0.2);
+  cursor: pointer;
+}
+
+.searchBtn:hover {
+  background-color: rgba(79, 169, 105, 0.2); /* hover:bg-[#4FA969 with opacity] */
+}
+
+.openSearchBtn {
+  color: #4FA969;
+  border-radius: 9999px; /* rounded-full */
+  height: 2rem;  /* h-8 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  background-color: rgba(79, 169, 105, 0.2);
+  
+}
+
+/* StationListModal.module.css */
+
+.searchInput {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+}
+
+.searchInput input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.badgetrue {
+  background-color: #EBFAD3;
+  color: #568811;
+  border-radius: 9999px;
+  padding: 0.2rem 0.5rem;
+}
+.badgefalse {
+  background-color: #f2f2f2;
+  color: #666666;
+  border-radius: 9999px;
+  padding: 0.2rem 0.5rem;
+}
+
+.listSection {
+  padding: 16px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.listSection:hover {
+  background-color: #f8f9fa;
+}
+
+/* ✅ 선택된 리스트 아이템 스타일 추가 */
+.selected {
+  background-color: rgba(79, 169, 105, 0.1) !important;
+  border-left: 4px solid #4FA969 !important;
+  box-shadow: 0 2px 8px rgba(79, 169, 105, 0.2) !important;
+}
+
+.listSection h4 {
+  margin: 8px 0 4px 0;
+  font-weight: 500;
+}
+
+.listSection p {
+  margin: 4px 0;
+}
+
+.scrollContent {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.scrollContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollContent::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.scrollContent::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.scrollContent::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
