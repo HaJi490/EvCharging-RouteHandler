@@ -18,8 +18,8 @@ import { StationListItem } from "../types/dto";
 import nmToid from '../db/mappings/busi_id.json'
 import style from './home.module.css'
 
-import fetchStationDto from '../db/mocks/fetchStations.json'
-import fetchShortestDto from '../db/mocks/fetchShortest.json'
+import fetchStationDto from '../mocks/fetchStations.json'
+import fetchShortestDto from '../mocks/fetchShortest.json'
 
 interface Filters {
   lat: number;
@@ -117,15 +117,15 @@ export default function Home() {
     console.log("API 요청 보낼 필터:", requestBody);
 
     try {
-      // const res = await axios.post<ChargingStationResponseDto[]>(
-      //   `http://${process.env.NEXT_PUBLIC_BACKIP}:8080/map/post/stations`,
-      //   requestBody,
-      //   // { signal } 
-      // );
-      // const data = Array.isArray(res.data) ? res.data : [];
-      const res = fetchStationDto;
-      console.log(res);
-      return res;
+      const res = await axios.post<ChargingStationResponseDto[]>(
+        `http://${process.env.NEXT_PUBLIC_BACKIP}:8080/map/post/stations`,
+        requestBody,
+        // { signal } 
+      );
+      const data = Array.isArray(res.data) ? res.data : [];
+      // const res = fetchStationDto;
+      console.log(res.data);
+      return res.data;
       // return statResp;  //🍕 위에주석풀기
     } catch (err) {
       if (axios.isCancel(err)) return [];            // “정상 취소”는 무시
@@ -164,16 +164,15 @@ export default function Home() {
 
     console.log("API 최단요청 보낼 필터:", requestBody);
     try {
-      // const res =
-      //   await axios.post<ChargingStationResponseDto[]>(
-      //     `http://${process.env.NEXT_PUBLIC_BACKIP}:8080/map/get/near`,
-      //     requestBody,
-      //     // { signal} 
-      //   )
-      // const data = Array.isArray(res.data) ? res.data : [];
+      const res =
+        await axios.post<ChargingStationResponseDto[]>(
+          `http://${process.env.NEXT_PUBLIC_BACKIP}:8080/map/get/near`,
+          requestBody,
+          // { signal} 
+        )
+      const data = Array.isArray(res.data) ? res.data : [];
 
-
-      const data = fetchShortestDto;
+      // const data = fetchShortestDto;
       console.log(data);
       return data;
     } catch (err) {
@@ -295,50 +294,6 @@ export default function Home() {
 
     return unifiedList;
   },[chgerData, recommendedChgerDt]);
-
-  // 10. n시간 후 충전소 상태
-  // const fetchStationPrediction = useCallback(async(filtersToApply: Filters, nHours:number) => {
-  //   if(!token) {
-  //     setToastMsg('로그인이 필요한 서비스입니다.');
-  //   }
-
-  //   console.log('[Home] 10. n시간후 충전소 정보요청')
-  //   const requestBody: ChargingStationPredictionRequestDto = {
-  //     "coorDinatesDto" : {
-  //       lat: filtersToApply.lat,
-  //       lon: filtersToApply.lon,
-  //       radius: filtersToApply.radius,
-  //     },
-  //     "mapQueryDto":{
-  //       useMap: true,
-  //       canUse: filtersToApply.canUse,
-  //       parkingFree: filtersToApply.parkingFree,
-  //       limitYn: filtersToApply.limitYn,
-  //       chgerType: filtersToApply.chargerTypes.length > 0 ? filtersToApply.chargerTypes : [], // 빈 배열일 때 undefined로 보내는 등 백엔드에 맞게 조정
-  //       busiId: filtersToApply.chargerComps.length > 0 ? CompNmToIds(filtersToApply.chargerComps) : [],
-  //       outputMin: filtersToApply.outputMin,
-  //       outputMax: filtersToApply.outputMax,
-  //       keyWord: filtersToApply.keyWord
-  //     },
-  //     time: "2025-07-23T00:31:45.380Z" // kdt, utc 물어보기
-  //   };
-  //   console.log("API 요청 보낼 필터:", requestBody);
-
-  //   try {
-  //     const res = await axios.post<ChargingStationPredictionResponseDto[]>(
-  //       `http://${process.env.NEXT_PUBLIC_BACKIP}:8080/pred/location`,
-  //       requestBody,
-  //       {headers: { Authorization: `Bearer ${token}`}}
-  //     );
-  //     const data = Array.isArray(res.data) ? res.data : [];
-  //     return data;
-  //     // return statPredictResp; //🍕
-  //   } catch(err){
-  //     if(axios.isCancel(err)) return;
-  //     console.error('fetchStationPrediction 오류: ', err);
-  //     return null;
-  //   }
-  // },[]);
 
   // 11. 충전소 추천 정보요청(장기충전 선택x, 예측)
   const fetchStationRecommended = useCallback(async(filtersToApply: Filters, nHours:number) => {

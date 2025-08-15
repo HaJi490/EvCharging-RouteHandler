@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {Provider as JotaiProvider} from 'jotai';
+
+import MSWComponent  from '@/mocks/MSWComponent'
 import TokenExpireWatcher from "@/components/TokenExpireWatcher";
 import ConditionalNav from "@/components/Nav/ConditionalNav";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
@@ -32,6 +34,7 @@ export default function RootLayout({
       
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <JotaiProvider>
+          <MSWComponent/>
           <TokenExpireWatcher/>
           <script
             type="text/javascript"
