@@ -18,8 +18,8 @@ import { StationListItem } from "../types/dto";
 import nmToid from '../db/mappings/busi_id.json'
 import style from './home.module.css'
 
-import fetchStationDto from '../mocks/fetchStations.json'
-import fetchShortestDto from '../mocks/fetchShortest.json'
+// import fetchStationDto from '../mocks/fetchStations.json'
+// import fetchShortestDto from '../mocks/fetchShortest.json'
 
 interface Filters {
   lat: number;
@@ -336,11 +336,6 @@ export default function Home() {
       },
       time: finalDate // kdt, utc 물어보기
     };
-    // const requestBody = {
-    //   lat: filtersToApply.lat,
-    //   lon: filtersToApply.lon,
-    //   radius: filtersToApply.radius,
-    // };
     console.log('추천충전소 요청 필터: ', requestBody);
 
     try{

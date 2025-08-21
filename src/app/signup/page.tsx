@@ -68,7 +68,6 @@ export default function signup() {
 
     // id 중복확인
     const checkValid = async() => {
-        console.log({username: id});
         setIsIdValid(false)
         if(id == null || id === "" || id.length < 5){
             setValidMsg("아이디는 5자 이상이어야 합니다.")
@@ -82,7 +81,8 @@ export default function signup() {
 
         try{
             const res = await axios.post(`http://${process.env.NEXT_PUBLIC_BACKIP}:8080/user/join/valid`, 
-                                        {username: id,password : "temp"},{headers:{'Content-Type': 'application/json'}});
+                {username: id, password : "temp"},
+                {headers:{'Content-Type': 'application/json'}});
             setIsIdValid(true);
             setValidMsg(res.data);
         } catch (error){
@@ -183,13 +183,13 @@ export default function signup() {
 
     // 다음 우편번호 검색
     const openDaumPostcode = () => {
-    new window.daum.Postcode({
-        oncomplete: function (data: any) {
-            setZoneCode(data.zonecode); // 우편번호
-            setRoadAddress(data.roadAddress); // 도로명 주소
-            setAddr('');    //상세주소 초기화
-        },
-    }).open();
+        new window.daum.Postcode({
+            oncomplete: function (data: any) {
+                setZoneCode(data.zonecode); // 우편번호
+                setRoadAddress(data.roadAddress); // 도로명 주소
+                setAddr('');    //상세주소 초기화
+            },
+        }).open();
     };
 
     // 회원정보 등록
@@ -261,7 +261,7 @@ export default function signup() {
             console.log(requestBody);
             const resp = await axios.post(`http://${process.env.NEXT_PUBLIC_BACKIP}:8080/user/join`,requestBody);
             //정상이면 가입완료 페이지로
-            console.log(resp)
+            console.log(resp.data)
             // router.push('success')
             if(resp['status'] === 200){
                 router.push('/signup/success')
@@ -278,26 +278,6 @@ export default function signup() {
   return (
         <main className="w-full py-30 flex flex-col justify-center items-center px-4">
             <h2 className='text-center font-medium text-[28px] tracking-wide mb-15'>회원가입</h2>
-            {/* step UI */}
-            {/* <div className="flex justify-center items-center gap-8 mb-10 text-[#afafaf]">
-                {steps.map((step, i, arr) => (
-                    <React.Fragment key={i}>
-                        <div className="flex flex-col items-center text-center">
-                            <div className="font-semibold text-[15px]">
-                                0{i + 1}
-                            </div>
-                            <span className= {`text-[24px] my-2 ${i === 0 ? 'text-[#4FA969]' : ''}`}>{step.icon}</span>
-                            <p className="text-[15px]">{step.label}</p>
-                        </div>
-                        /마지막이 아닌 경우에만 선 추가
-                        { i < arr.length - 1 && (
-                            <hr className="w-8 border-[#f2f2f2] "/>
-                        )}
-                    </React.Fragment>
-                ))}
-
-            </div> */}
-
             {/* 필수입력 */}
             <div className="w-7/10 max-w-[1100px] mb-5">
                 <h3 className='text-left font-medium text-[28px]'>필수입력 정보</h3>

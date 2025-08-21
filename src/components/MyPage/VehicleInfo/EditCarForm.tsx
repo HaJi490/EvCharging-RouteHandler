@@ -110,9 +110,9 @@ export default function EditCarForm({
 
 
   return (
-     // 👇 모달 배경
+     // 모달 배경
     <div className="fixed inset-0 bg-black/30 flex justify-center items-center z-50" onClick={onClose}>
-        {/* 👇 모달 컨텐츠 (이벤트 버블링 방지) */}
+        {/* 모달 컨텐츠 (이벤트 버블링 방지) */}
         <div className="bg-white rounded-lg p-8 shadow-xl w-full max-w-2xl" onClick={(e) => e.stopPropagation()}>
             <h2 className='text-center font-medium text-2xl mb-6'>
                 차량 정보 수정

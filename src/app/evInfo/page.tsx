@@ -75,7 +75,7 @@ export default function page() {
 
         console.log('requestBdy: ', requestBody);
         try{
-            const res = await axios.post(`http://${process.env.NEXT_PUBLIC_BACKIP}:8080/user/car/set`,
+            await axios.post(`http://${process.env.NEXT_PUBLIC_BACKIP}:8080/user/car/set`,
                 requestBody,
                 { headers: { Authorization: `Bearer ${token}` } }
             

@@ -18,7 +18,7 @@ import { FiSettings } from "react-icons/fi";
 import { FiEdit3 } from "react-icons/fi";
 
 
-const TAB_MENU = [ '차량정보']; //'충전 히스토리', , '문의', '기본설정'
+const TAB_MENU = ['차량정보']; //'충전 히스토리', , '문의', '기본설정'
 
 export default function page() {
     const [token] = useAtom(accessTokenAtom);
@@ -37,9 +37,7 @@ export default function page() {
             try {
                 const res = await axios.get(`http://${process.env.NEXT_PUBLIC_BACKIP}:8080/user/info`, 
                     {
-                        headers: {
-                            Authorization: `Bearer ${token}` 
-                        }
+                        headers: {Authorization: `Bearer ${token}`}
                     }
                 )
                 setMemberDt(res.data);
@@ -77,10 +75,6 @@ export default function page() {
 
     const handleTabClick = (tabName: string) => {
         setActiveTab(tabName);
-        // const ref = sectionRefs[tabName];
-        // if(ref && ref.current) {
-        //     ref.current.scrollIntoView({behavior:'smooth', block:'start'});
-        // }
     }
 
     // activeTab에 따라 렌더링할 컴포넌트 결정
