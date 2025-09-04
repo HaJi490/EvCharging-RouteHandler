@@ -1,4 +1,4 @@
-// 마커표시
+// 기본 / 마커표시
 export interface StationSimpleDto {
     statId: string;
     statNm: string;
@@ -29,6 +29,7 @@ export interface StationShortestDto extends StationSimpleDto {
 }
 
 // 예측
-export interface StationRecommendationDto extends StationShortestDto {
-  predTag: string | null; // 예측 태그
+export interface StationRecommendDto extends StationShortestDto {
+    predTag: 'QUICK' | 'NORMAL' | 'SLOW' | 'CROWDED';
+
 }
