@@ -1,5 +1,5 @@
 // 📍전기차충전소 요청dto
-export interface CoordinatesDto {
+export interface coordinatesDto {
     lat: number;
     lon: number;
     radius: number;
@@ -18,13 +18,13 @@ export interface MapQueryDto {
 }
 
 export interface ChargingStationRequestDto {
-    coorDinatesDto: CoordinatesDto;
+    coordinatesDto: coordinatesDto;
     mapQueryDto: MapQueryDto;
 }
 
 // n시간후 전기차충전소 요청dto
 export interface ChargingStationPredictionRequestDto {
-    coorDinatesDto: CoordinatesDto;
+    coordinatesDto: coordinatesDto;
     mapQueryDto: MapQueryDto;
     time: Date;
 }

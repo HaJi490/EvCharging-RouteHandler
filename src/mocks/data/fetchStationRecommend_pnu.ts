@@ -1,5 +1,5 @@
 // {
-//         "coorDinatesDto" : {
+//         "coordinatesDto" : {
 //             "lat":35.2300, 
 //             "lon":129.0880,
 //             "radius":1000

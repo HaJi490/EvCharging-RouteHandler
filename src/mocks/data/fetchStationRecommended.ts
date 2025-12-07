@@ -1,6 +1,6 @@
 // 요청
 // {
-//         "coorDinatesDto" : {
+//         "coordinatesDto" : {
 //             "lat":35.2110582, 
 //             "lon":129.076842,
 //             "radius":1000

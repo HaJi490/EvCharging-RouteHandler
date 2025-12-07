@@ -96,7 +96,7 @@ export default function Home() {
     
     // API 요청 DTO에 맞게 필터 객체 구성
     const requestBody: ChargingStationRequestDto = {
-      "coorDinatesDto" : {
+      "coordinatesDto" : {
         lat: filtersToApply.lat,
         lon: filtersToApply.lon,
         radius: filtersToApply.radius,
@@ -144,7 +144,7 @@ export default function Home() {
     
     // API 요청 DTO에 맞게 필터 객체 구성
     const requestBody: ChargingStationRequestDto = {
-      "coorDinatesDto" : {
+      "coordinatesDto" : {
         lat: filtersToApply.lat,
         lon: filtersToApply.lon,
         radius: filtersToApply.radius,
@@ -318,7 +318,7 @@ export default function Home() {
     console.log('최종요청 시간: ', finalDate);
     
     const requestBody: ChargingStationPredictionRequestDto = {
-      "coorDinatesDto" : {
+      "coordinatesDto" : {
         lat: filtersToApply.lat,
         lon: filtersToApply.lon,
         radius: filtersToApply.radius,
@@ -377,7 +377,7 @@ export default function Home() {
     console.log('최종요청 시간: ', finalDate);
 
     const requestBody: ChargingStationPredictionRequestDto = {
-      "coorDinatesDto" : {
+      "coordinatesDto" : {
         lat: filtersToApply.lat,
         lon: filtersToApply.lon,
         radius: filtersToApply.radius,
@@ -561,7 +561,7 @@ export default function Home() {
           // 현재
           const [currentResult, shortestResult] = await Promise.all([ //Promise.all**을 사용하면 두 API를 병렬로 호출하여 시간을 절약
             // 결과값을 return 해주어야 Promise.all이 값을 받을 수 있음
-            fetchStations(filtersToRequest ),
+            fetchStations(filtersToRequest),
             fetchShortest(filtersToRequest),
             // fetchStationPrediction(filtersToRequest, predictionHours)
           ]);
