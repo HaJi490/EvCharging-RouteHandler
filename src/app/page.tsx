@@ -17,6 +17,7 @@ import {ChargingStationPredictionRequestDto, ChargingStationPredictionResponseDt
 import { StationListItem } from "../types/dto";
 import nmToid from '../db/mappings/busi_id.json'
 import style from './home.module.css'
+import { isMSWReady } from "@/mocks/MSWComponent";
 
 // import fetchStationDto from '../mocks/fetchStations.json'
 // import fetchShortestDto from '../mocks/fetchShortest.json'
@@ -89,6 +90,14 @@ export default function Home() {
   // 1. 충전소 정보 가져오기
   const fetchStations = useCallback(async (filtersToApply: Filters) => {
     console.log('[Home] 1. 충전소 정보요청')
+    
+    // MSW 준비확인
+    if (process.env.NEXT_PUBLIC_USE_MSW  === 'true' && !isMSWReady()){
+      console.warn('MSW가 아직 준비되지 않았습니다. 요청대기중')
+      // 잠깐 대기
+      await new Promise(resolve => setTimeout(resolve, 500))
+    }
+    
     ongoing.current?.abort();                   // 직전 요청 취소
     const controller = new AbortController();   // 새 컨트롤러
     ongoing.current = controller;

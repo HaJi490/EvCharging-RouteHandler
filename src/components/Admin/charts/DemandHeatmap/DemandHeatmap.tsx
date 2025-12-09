@@ -68,7 +68,6 @@ export default function DemandHeatmap({onApplyFilter, pointsDt, onSelectStat, in
   // 3. ResizeObserver를 설정하는 useEffect를 추가합니다.
   useEffect(() => {
     const observer = new ResizeObserver(() => {
-        // 🚨 핵심 해결책: setTimeout으로 감싸줍니다.
         setTimeout(() => {
             mapRef.current?.resize();
         }, 0);

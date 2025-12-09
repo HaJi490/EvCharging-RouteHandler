@@ -10,7 +10,7 @@ console.log('🔧 MSW BASE_URL:', BACK_IP);
 // 충전소 관련 API
 const statHandler = [
     // 1. 충전소 정보 가져오기
-    http.post(`${BACK_IP}/map/post/stations`, async({request}) => {
+    http.post(`*/map/post/stations`, async({request}) => {
         console.log('hadlers1_ 충전소 정보 요청받음')
 
         const filters = await request.json();
@@ -23,7 +23,7 @@ const statHandler = [
     }),
 
     // 2. 최단거리/최소시간 조회
-    http.post(`${BACK_IP}/map/get/near`, async({request}) => {
+    http.post(`*/map/get/near`, async({request}) => {
         console.log('hadlers2_ 최단거리 충전소 정보 요청받음')
         
         const filters = await request.json();
@@ -33,7 +33,7 @@ const statHandler = [
     }),
 
     // 3. n시간 후 예측/추천
-    http.post(`${BACK_IP}/recommend/car`, async({request}) => {
+    http.post(`*/recommend/car`, async({request}) => {
         console.log('handlers3_ 추천 충전소 요청 받음')
 
         const filters = await request.json();
