@@ -42,9 +42,18 @@ export default function MSWComponent({ children }: { children: React.ReactNode }
                         url: '/mockServiceWorker.js'
                     }
                 })
+
+                // ⭐ 추가: Service Worker 상태 확인
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations()
+                    console.log('🔧 등록된 Service Worker 수:', registrations.length)
+                    registrations.forEach((reg, index) => {
+                        console.log(`  ${index + 1}. ${reg.active?.scriptURL}`)
+                    })
+                }
                 console.log('MSW 활성화 완료');
                 console.log('현재 등록된 핸들러 수:', worker.listHandlers().length)
-            
+
                 mswInitialized = true;
             } catch (error) {
                 console.error('MSW 초기화 실패:', error);

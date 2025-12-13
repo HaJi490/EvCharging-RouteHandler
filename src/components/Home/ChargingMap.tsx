@@ -455,7 +455,7 @@ export default function ChargingMap({
                                 <p className='text-xs font-bold flex items-center text-[#4FA969] rounded-full '>
                                     최단경로 
                                     <span className='text-[#4FA969]/40'><LuDot/></span>
-                                    {formatToKm(shortest[0].leastDis)}
+                                    {formatToKm(shortest?.[0]?.leastDis ?? 0 )}
                                 </p>
                                 <p className=' font-bold'>{shortest[0].statNm}</p>
                             </button>
